@@ -40,18 +40,18 @@ class MovieDetailScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 15.0),
-          Text(movie.name ?? '', style: _theme.textTheme.headline1),
+          Text(movie.title ?? '', style: _theme.textTheme.headline1),
           const SizedBox(height: 8.0),
           Row(
             children: [
-              Text('Director: ${movie.director} | ',
+              Text('Year: ${movie.year!} | ',
                   style: _theme.textTheme.bodyText1),
               Icon(
                 Icons.star,
                 color: Color(0xFFFFA235),
                 size: 14.0,
               ),
-              Text(' ${movie.rating}', style: _theme.textTheme.bodyText1)
+              Text(' ${movie.rating} ', style: _theme.textTheme.bodyText1)
             ],
           ),
           const SizedBox(height: 15.0),
@@ -87,7 +87,7 @@ class MovieDetailScreen extends StatelessWidget {
           Text('Storyline', style: _theme.textTheme.headline1),
           const SizedBox(height: 8.0),
           ReadMoreText(
-            movie.storyLine!,
+            movie.summary!,
             style: _theme.textTheme.subtitle1,
             trimLines: 2,
             colorClickableText: _theme.primaryColor,

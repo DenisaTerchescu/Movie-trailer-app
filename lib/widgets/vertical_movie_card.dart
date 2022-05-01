@@ -16,56 +16,58 @@ class VerticalMovieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     
-    return InkWell(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MovieDetailScreen(movie: movie),
-          ),
-        );
-      },
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: 15.0),
-        child: Row(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(15.0),
-              child: OctoImage(
-                image: CachedNetworkImageProvider(movie.image!),
-                width: 75.0,
-                height: 75.0,
-                fit: BoxFit.cover,
-              ),
+    return SingleChildScrollView(
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MovieDetailScreen(movie: movie),
             ),
-            const SizedBox(width: 15.0),
-            Expanded(
-              child: SizedBox(
-                height: 70.0,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      movie.genres!.first,
-                      style: _theme.textTheme.subtitle2,
-                    ),
-                    Text(
-                      movie.name!,
-                      maxLines: 1,
-                      style: _theme.textTheme.headline3,
-                    ),
-                    SmoothStarRating(
-                      rating: movie.rating,
-                      color: Color(0xFFFFA235),
-                      size: 15.0,
-                      isReadOnly: true,
-                    ),
-                  ],
+          );
+        },
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 15.0),
+          child: Row(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(15.0),
+                child: OctoImage(
+                  image: CachedNetworkImageProvider(movie.image!),
+                  width: 75.0,
+                  height: 75.0,
+                  fit: BoxFit.cover,
                 ),
               ),
-            )
-          ],
+              const SizedBox(width: 15.0),
+              Expanded(
+                child: SizedBox(
+                  height: 70.0,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        movie.genres!.first,
+                        style: _theme.textTheme.subtitle2,
+                      ),
+                      Text(
+                        movie.title!,
+                        maxLines: 1,
+                        style: _theme.textTheme.headline3,
+                      ),
+                      SmoothStarRating(
+                        rating: movie.rating!/2,
+                        color: Color(0xFFFFA235),
+                        size: 15.0,
+                        isReadOnly: true,
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

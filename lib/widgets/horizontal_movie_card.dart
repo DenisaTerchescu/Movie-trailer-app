@@ -17,44 +17,50 @@ class HorizontalMovieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
 
-    return Container(
-      width: 200.0,
-      padding: EdgeInsets.only(right: 15.0),
-      child: InkWell(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => MovieDetailScreen(movie: movie),
-            ),
-          );
-        },
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(15.0),
-              child: OctoImage(
-                image: CachedNetworkImageProvider(movie.image!),
-                width: 200.0,
-                height: 250.0,
-                fit: BoxFit.cover,
+    return SingleChildScrollView(
+      child: Container(
+        width: 200.0,
+        padding: EdgeInsets.only(right: 15.0),
+        child: InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => MovieDetailScreen(movie: movie),
               ),
-            ),
-            const SizedBox(height: 15.0),
-            Text(
-              movie.name!,
-              maxLines: 1,
-              style: _theme.textTheme.headline3,
-            ),
-            const SizedBox(height: 5.0),
-            SmoothStarRating(
-              rating: movie.rating,
-              color: Color(0xFFFFA235),
-              size: 15.0,
-              isReadOnly: true,
-            ),
-          ],
+            );
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(15.0),
+                child: OctoImage(
+                  image: CachedNetworkImageProvider(movie.image!),
+                  width: 200.0,
+                  height: 250.0,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              const SizedBox(height: 15.0),
+              Text(
+                movie.title!,
+                maxLines: 1,
+                style: _theme.textTheme.headline3,
+              ),
+              const SizedBox(height: 5.0),
+
+              SmoothStarRating(
+                rating: movie.rating!/2,
+                color: Color(0xFFFFA235),
+                size: 15.0,
+                isReadOnly: true,
+                allowHalfRating: true,
+
+              ),
+
+            ],
+          ),
         ),
       ),
     );
