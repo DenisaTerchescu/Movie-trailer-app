@@ -47,7 +47,8 @@ class MovieModel {
     year = json["release_date"].substring(0,4);
     genres = [json["genres"][0]["name"], 'Action'];
     summary = json["overview"];
-    key = "https://www.youtube.com/watch?v=" + json_trailer["results"][0]["key"];
+    // key = "https://www.youtube.com/watch?v=" + json_trailer["results"][0]["key"];
+    key = json_trailer["results"][0]["key"];
   }
 
 
