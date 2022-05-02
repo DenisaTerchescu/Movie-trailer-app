@@ -123,6 +123,7 @@ class MovieDetailScreen extends StatelessWidget {
           onPressed: () {
             // goToYoutube(movie.key!);
             Navigator.pushReplacement(context, MaterialPageRoute(
+
                 builder: (context) => new Video(
                   url: movie.key!,
                     )
