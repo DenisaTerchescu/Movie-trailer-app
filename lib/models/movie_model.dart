@@ -10,6 +10,7 @@ class MovieModel {
    String? year;
   List<String>? genres;
    String? summary;
+   String? key;
   // MovieModel (Map<String, dynamic> movie)
   //     : title=movie['title'] as String,
   //       image=movie['medium_cover_image'] as String,
@@ -26,17 +27,27 @@ class MovieModel {
     this.summary,
   });
 
+ String? get getKey {
+   return key;
+ }
 
-  MovieModel.fromJson(Map<String, dynamic> json){
+ // Creating the setter method
+ // to set the input in Field/Property
+ set setKey(String new_key) {
+   key = new_key;
+ }
+
+
+ MovieModel.fromJson(Map<String, dynamic> json, Map<String, dynamic> json_trailer ){
 
     title = json["title"];
     rating =  json["vote_average"];
     // image = 'https://i.pinimg.com/564x/19/ff/0a/19ff0a49907d3fe9a2385ec67e201164.jpg';
     image = 'http://image.tmdb.org/t/p/w300' + json["poster_path"];
-    year=json["release_date"].substring(0,4);
-    genres=[json["genres"][0]["name"], 'Action'];
-    summary=json["overview"];
-
+    year = json["release_date"].substring(0,4);
+    genres = [json["genres"][0]["name"], 'Action'];
+    summary = json["overview"];
+    key = "https://www.youtube.com/watch?v=" + json_trailer["results"][0]["key"];
   }
 
 

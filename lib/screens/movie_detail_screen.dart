@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:readmore/readmore.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../models/movie_model.dart';
 
@@ -10,6 +12,16 @@ class MovieDetailScreen extends StatelessWidget {
 
   const MovieDetailScreen({Key? key, required this.movie}) : super(key: key);
 
+  goToYoutube(String url) async{
+  try {
+
+    await launchUrlString(url);
+
+  } on Exception catch (Exception){
+      print("Error");
+    }
+
+  }
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -106,9 +118,12 @@ class MovieDetailScreen extends StatelessWidget {
         height: 50.0,
         width: double.infinity,
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            goToYoutube(movie.key!);
+
+          },
           child: Text(
-            'Watch Movie',
+            'Watch Movie Trailer',
             style: _theme.textTheme.headline3,
           ),
         ),
