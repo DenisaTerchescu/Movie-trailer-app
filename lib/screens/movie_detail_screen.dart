@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_ui/widgets/Video.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:readmore/readmore.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:video_player/video_player.dart';
 
 import '../models/movie_model.dart';
 
@@ -119,7 +121,11 @@ class MovieDetailScreen extends StatelessWidget {
         width: double.infinity,
         child: ElevatedButton(
           onPressed: () {
-            goToYoutube(movie.key!);
+            // goToYoutube(movie.key!);
+            Navigator.pushReplacement(context, MaterialPageRoute(
+                builder: (context) => new TrailerPlayer(
+                    videoData: movie.key!)
+            ));
 
           },
           child: Text(
