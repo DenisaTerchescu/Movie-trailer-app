@@ -1,4 +1,3 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../models/movie_model.dart';
@@ -15,7 +14,7 @@ class VerticalMovieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
-    
+
     return SingleChildScrollView(
       child: InkWell(
         onTap: () {
@@ -57,7 +56,7 @@ class VerticalMovieCard extends StatelessWidget {
                         style: _theme.textTheme.headline3,
                       ),
                       SmoothStarRating(
-                        rating: movie.rating!/2,
+                        rating: movie.rating! / 2,
                         color: Color(0xFFFFA235),
                         size: 15.0,
                         isReadOnly: true,

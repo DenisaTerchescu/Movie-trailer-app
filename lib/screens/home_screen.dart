@@ -1,7 +1,13 @@
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_ui/screens/bookmarks_screen.dart';
+import 'package:flutter_movie_ui/screens/search_screen.dart';
 
 import 'dashboard_screen.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:octo_image/octo_image.dart';
+
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,7 +19,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   late PageController _controller;
-
+  String imgProfile =
+      'https://i.pinimg.com/280x280_RS/7d/00/a9/7d00a97b0586e2901f4ba586a7f247ce.jpg';
   @override
   void initState() {
     super.initState();
@@ -22,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
+    final _theme = Theme.of(context);
     return Scaffold(
       body: SafeArea(
         child: PageView(
@@ -30,9 +37,26 @@ class _HomeScreenState extends State<HomeScreen> {
           onPageChanged: (v) {},
           children: [
             DashboardScreen(),
-            Center(child: Text('Search')),
-            Center(child: Text('Bookmark')),
-            Center(child: Text('Profile')),
+            SearchScreen(),
+            BookmarkedMovies(),
+            Center(
+                child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(70.0),
+                  child: OctoImage(
+                    image: CachedNetworkImageProvider(imgProfile),
+                    width: 250.0,
+                    height: 250.0,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                const SizedBox(height: 15.0),
+                Text('Amanda', style: _theme.textTheme.headline1),
+              ],
+            )),
           ],
         ),
       ),

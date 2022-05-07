@@ -1,5 +1,3 @@
-
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../models/movie_model.dart';
@@ -49,16 +47,13 @@ class HorizontalMovieCard extends StatelessWidget {
                 style: _theme.textTheme.headline3,
               ),
               const SizedBox(height: 5.0),
-
               SmoothStarRating(
-                rating: movie.rating!/2,
+                rating: movie.rating! / 2,
                 color: Color(0xFFFFA235),
                 size: 15.0,
                 isReadOnly: true,
                 allowHalfRating: true,
-
               ),
-
             ],
           ),
         ),

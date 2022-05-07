@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_movie_ui/screens/home_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+
+
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
@@ -25,7 +27,8 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         scaffoldBackgroundColor: Color(0xFF1D2027),
         backgroundColor: Color(0xFF1D2027),
-        primaryColor: Color(0xFF546EE5),
+        primaryColor: Colors.amber,
+        // primaryColor: Color(0xFF546EE5),
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
           elevation: 0.0,
